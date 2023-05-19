@@ -23,29 +23,42 @@
 
     <center id="center" >
         <h1>Your compilar</h1> <br>
-        <form action="/compile" method="post" id="form" >
-           
-            <textarea name="code" id="code" cols="100" rows="13" placeholder="write your code here"></textarea>
+        <form action="/" method="post" id="form" >
+         <%  if(messege.code){  %>
+            <textarea name="code" id="code" cols="100" rows="13" placeholder="<%= messege.code %>"></textarea><br>
+          <% }else{ %>
+            <textarea name="code" id="code" cols="100" rows="13" placeholder="write your code here" required></textarea> <br>
+         <%  }  %>
 
             <h3>input</h3>
-            <textarea name="input" id="input" cols="100" rows="10" placeholder="your input" ></textarea> <br>
-            language: <select name="lang" id="lang">
-                <option value="C">C</option>
-                <option value="C++">C++</option>
-                <option value="java">java</option>
-                <option value="python">python</option>
-            </select>
+            <%  if(messege.input){  %>
+                <textarea name="code" id="code" cols="100" rows="13" placeholder="<%= messege.input %>"></textarea> <br>
+              <% }else{ %>
+                <textarea name="input" id="input" cols="100" rows="10" placeholder="your input" ></textarea> <br>
+             <%  }  %>
+             language:
+             <%  if(messege.lang){  %>
+               <option value="<% messege.lang %>"><% <messege.lang %></messege.lang></option>
+              <% }else{ %>
+                <select name="lang" id="lang" required>
+                    <option value="C">C</option>
+                    <option value="C++">C++</option>
+                    <option value="java">java</option>
+                    <option value="python">python</option>
+                </select>
+             <%  }  %>
+
             compile with input :
-            <input type="radio" name="yes" id="yes">yes
-            <input type="radio" name="no" id="no">no <br> <br>
-
-            <button type="submit" >submit</button> <br> <br> <br>
-
-        </form>
-    </center>
-
-
-
-    
+            <%  if(messege.radio ==='true'){  %>
+                <input type="radioon" name="inputRadio" id="yes" value="true">yes
+               <% }else{ %>
+                 <input type="radio" name="inputRadio" id="no" value="false">no
+              <%  }  %>
+            <button type="submit" name="submit" value="submit" >submit</button> <br> <br> <br> 
+        </form> <br>
+       <% if(typeof output !=='undefined'){ %>
+            <textarea name="" id="" cols="100" rows="5" placeholder="<%= output %>" ></textarea>
+        <% } %>
+        </center>
 </body>
 </html>

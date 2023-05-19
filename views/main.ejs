@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my compiler</title>
+    <style>
+        #center {
+            width:fit-content;
+            margin-left: 22rem;
+            margin-top: 5rem;
+            border: 1px solid blue;
+            align-items: center;
+        }
+        form {
+            display: inline-block;
+        }
+        form .input {
+            border: 1px solid blue;
+            color: blue;
+            border-radius: 20%;
+        }
+        form .textarea{
+            border: 1px solid blue;
+            color: blue;
+            border-radius: 20%;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+    </style>
+</head>
+<body>
+
+    <div id="center">
+      
+      
+        <% if(typeof message.output !=='undefined'){ %>
+            <a href="/"> <h1>Your compiler</h1></a>
+            <h3>output</h3>
+            <textarea name="" id="" cols="100" rows="5" placeholder="<%= message.output %>" ></textarea>
+        <% }else{ %>
+            <h1>Your compiler</h1></a>
+       <% } %>
+        <br>
+        <form action="/compile" method="post" id="form">
+            <% if (typeof message.code !== 'undefined') { %>
+                <textarea name="code" id="code" cols="100" rows="16" placeholder="<%= message.code %>"></textarea>
+                <br>
+            <% } else { %>
+                <textarea name="code" id="code" cols="100" rows="13" placeholder="write your code here" required></textarea>
+                <br>
+            <% } %>
+
+            <h3>Input</h3>
+            <% if (typeof message.input !== 'undefined') { %>
+                <textarea name="input" id="input" cols="100" rows="5" placeholder="<%= message.input %>"></textarea>
+                <br>
+            <% } else { %>
+                <textarea name="input" id="input" cols="100" rows="10" placeholder="your input"></textarea>
+                <br>
+            <% } %>
+            
+            Language:
+            <% if (typeof message.lang !== 'undefined') { %>
+                <select name="lang" id="lang">
+                    <option value="<%= message.lang %>"><%= message.lang %></option>
+                </select>
+            <% } else { %>
+                <select name="lang" id="lang" required>
+                    <option value="C">C</option>
+                    <option value="C++">C++</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                </select>
+            <% } %>
+            
+            Compile with input:
+            <% if (typeof message.radio !== 'undefined' && message.radio === 'true' ||message.radio ==='false' ) { %>
+                <input type="radio" name="inputRadio" id="yes" value="true" checked><%= message.radio %>
+            <% } else { %>
+                <input type="radio" name="inputRadio" id="yes" value="true">true
+                <input type="radio" name="inputRadio" id="no" value="false">false
+            <% } %>
+            
+            <button type="submit" name="submit" value="submit">Submit</button>
+            <br><br><br>
+        </form>
+        <br>
+    </div>
+
+</body>
+</html>
