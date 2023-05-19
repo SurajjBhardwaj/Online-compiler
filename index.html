@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my compilar</title>
+    <style>
+        #center{
+            border: 1px solid;
+            border-color: blue;
+        }
+        form{
+            display: inline-block;
+        }
+        form.input{
+            border: 1px solid blue;
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+
+    <center id="center" >
+        <h1>Your compilar</h1> <br>
+        <form action="/compile" method="post" id="form" >
+           
+            <textarea name="code" id="code" cols="100" rows="13" placeholder="write your code here"></textarea>
+
+            <h3>input</h3>
+            <textarea name="input" id="input" cols="100" rows="10" placeholder="your input" ></textarea> <br>
+            language: <select name="lang" id="lang">
+                <option value="C">C</option>
+                <option value="C++">C++</option>
+                <option value="java">java</option>
+                <option value="python">python</option>
+            </select>
+            compile with input :
+            <input type="radio" name="yes" id="yes">yes
+            <input type="radio" name="no" id="no">no <br> <br>
+
+            <button type="submit" >submit</button> <br> <br> <br>
+
+        </form>
+    </center>
+
+
+
+    
+</body>
+</html>
